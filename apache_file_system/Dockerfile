@@ -119,6 +119,7 @@ COPY php.ini /usr/local/etc/php/conf.d/php-matomo.ini
 # Add the EnvironmentVariables plugin
 COPY ./files/plugin-EnvironmentVariables-4.0.1/ /var/www/html/plugins/EnvironmentVariables
 COPY ./files/plugin-CustomVariables-4.1.1/ /var/www/html/plugins/CustomVariables
+COPY ./files/plugin-QueuedTracking-4.x-dev/ /var/www/html/plugins/QueuedTracking
 
 #COPY --chmod=0644 --chown=root:root ./files/lang-htaccess /var/www/html/lang/.htaccess
 #COPY --chmod=0644 --chown=root:root ./files/config-htaccess /var/www/html/config/.htaccess

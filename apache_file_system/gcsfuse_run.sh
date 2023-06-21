@@ -17,13 +17,9 @@
 set -eo pipefail
 echo "Service account activated."
 mkdir -p /var/www/html/config
-rm -rf /var/www/html/plugins
-mkdir -p /var/www/html/plugins
-gcsfuse --key-file=/service_acc.json --debug_gcs --debug_fuse -o allow_other -o nonempty --dir-mode=777 --file-mode=777 matomo-config-dev /var/www/html/config
-gcsfuse --key-file=/service_acc.json --debug_gcs --debug_fuse -o allow_other -o nonempty --dir-mode=777 --file-mode=777 --implicit-dirs matomo-plugins /var/www/html/plugins
+gcsfuse --key-file=/service_acc.json --debug_gcs --debug_fuse -o allow_other -o nonempty --dir-mode=777 --file-mode=777 matomo-config /var/www/html/config
 # Copy all files from /temp_plugins to /var/www/html/plugins
 chmod a+w /var/www/html/config
-chmod a+rw /var/www/html/plugins
 echo "Files mounted."
 chmod +x /entrypoint.sh
 echo "entrypoint.sh is executable."
