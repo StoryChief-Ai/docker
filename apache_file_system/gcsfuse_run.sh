@@ -20,6 +20,11 @@ mkdir -p /var/www/html/config
 gcsfuse --key-file=/service_acc.json --debug_gcs --debug_fuse -o allow_other -o nonempty --dir-mode=777 --file-mode=777 matomo-config /var/www/html/config
 # Copy all files from /temp_plugins to /var/www/html/plugins
 chmod a+w /var/www/html/config
+# Put the chmod permissions of /var/www/html/lang/.htaccess to 0644"
+#chmod 0644 /var/www/html/lang/.htaccess
+#chmod 0644 /var/www/html/config/.htaccess
+#chmod 0644 /var/www/html/tmp/.htaccess
+
 echo "Files mounted."
 chmod +x /entrypoint.sh
 echo "entrypoint.sh is executable."

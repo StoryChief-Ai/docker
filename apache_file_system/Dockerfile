@@ -121,9 +121,16 @@ COPY ./files/plugin-EnvironmentVariables-4.0.1/ /var/www/html/plugins/Environmen
 COPY ./files/plugin-CustomVariables-4.1.1/ /var/www/html/plugins/CustomVariables
 COPY ./files/plugin-QueuedTracking-4.x-dev/ /var/www/html/plugins/QueuedTracking
 
-#COPY --chmod=0644 --chown=root:root ./files/lang-htaccess /var/www/html/lang/.htaccess
-#COPY --chmod=0644 --chown=root:root ./files/config-htaccess /var/www/html/config/.htaccess
-#COPY --chmod=0644 --chown=root:root ./files/tmp-htaccess /var/www/html/tmp/.htaccess
+COPY ./files/lang-htaccess /var/www/html/lang/.htaccess
+COPY ./files/config-htaccess /var/www/html/config/.htaccess
+COPY ./files/tmp-htaccess /var/www/html/tmp/.htaccess
+
+RUN chmod 0644 /var/www/html/lang/.htaccess
+RUN chown root:root /var/www/html/lang/.htaccess
+RUN chmod 0644 /var/www/html/config/.htaccess
+RUN chown root:root /var/www/html/config/.htaccess
+RUN chmod 0644 /var/www/html/tmp/.htaccess
+RUN chown root:root /var/www/html/tmp/.htaccess
 
 COPY docker-entrypoint.sh /entrypoint.sh
 COPY gcsfuse_run.sh /gcsfuse_run.sh

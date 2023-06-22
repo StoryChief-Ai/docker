@@ -16,4 +16,7 @@ curl localhost:8080
 gcsfuse --key-file=/service_acc.json --debug_gcs --debug_fuse -o allow_other -o nonempty --implicit-dirs --dir-mode=777 --file-mode=777 --in matomo-plugin /var/www/html/config
 # Use gsutil to copy all subdirectories of plugins to the gcs bucket gc://matomo-plugins
 gsutil -m cp -r plugins/* gs://matomo-plugins
-# Use gsutil to copy all subdirectories of config to the gcs bucket gc://matomo-config
+# Set up cloud sql proxy for accessing the database locally
+./cloud-sql-proxy story-chief-161712:europe-west1:matomo-db
+# ls but show hidden files
+ls -a
